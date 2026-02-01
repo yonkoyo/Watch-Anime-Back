@@ -24,7 +24,6 @@ public class AuthService {
 
     @Transactional
     public AuthResponseDto register(RegisterDto dto) {
-        // Проверяем, существует ли пользователь с таким email
         if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email уже зарегистрирован");
         }
